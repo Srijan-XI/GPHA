@@ -1,0 +1,31 @@
+# Configuration for GitHub Project Health Analyzer
+
+# GitHub API settings
+github:
+  token: null  # Set via GITHUB_TOKEN environment variable or provide here
+  api_url: https://api.github.com
+
+# Analysis settings
+analysis:
+  # Number of days to analyze for activity metrics
+  activity_period_days: 90
+  
+  # Threshold for issue stagnation (days)
+  stagnation_threshold_days: 90
+  
+  # Number of days to analyze for code churn
+  churn_period_days: 90
+
+# Scoring weights (must sum to 1.0)
+scoring:
+  weights:
+    activity: 0.30
+    issue_health: 0.25
+    code_quality: 0.25
+    contributor_health: 0.20
+
+# Output settings
+output:
+  format: json  # json, yaml, or text
+  save_reports: true
+  reports_dir: reports

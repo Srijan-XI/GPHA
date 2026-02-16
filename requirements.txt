@@ -1,0 +1,16 @@
+# GitHub Project Health Analyzer - Requirements
+
+# Core dependencies
+requests>=2.31.0
+PyYAML>=6.0.1
+python-dotenv>=1.0.0
+
+# Optional: For using PyGithub instead of raw requests
+# PyGithub>=2.1.1
+
+# Development dependencies (uncomment for development)
+# pytest>=7.4.0
+# pytest-cov>=4.1.0
+# black>=23.7.0
+# flake8>=6.1.0
+# mypy>=1.5.0

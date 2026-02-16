@@ -1,0 +1,7 @@
+GitHub Project Heath Analyzer
+
+- Repo Activity scoring
+- issue stagnation detection
+- code churn analysis
+- contributor patterns
+
