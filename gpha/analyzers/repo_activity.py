@@ -2,7 +2,7 @@
 Repository activity analyzer.
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, Any
 from ..github_client import GitHubClient
 from ..models import ActivityMetrics
@@ -31,7 +31,7 @@ class RepoActivityAnalyzer:
         Returns:
             ActivityMetrics with calculated scores.
         """
-        now = datetime.now()
+        now = datetime.now(timezone.utc)
         thirty_days_ago = now - timedelta(days=30)
         ninety_days_ago = now - timedelta(days=90)
         

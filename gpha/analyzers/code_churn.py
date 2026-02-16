@@ -2,7 +2,7 @@
 Code churn analyzer.
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List
 from collections import defaultdict
 from ..github_client import GitHubClient
@@ -33,7 +33,7 @@ class CodeChurnAnalyzer:
         Returns:
             CodeChurnMetrics with calculated scores.
         """
-        since = datetime.now() - timedelta(days=days)
+        since = datetime.now(timezone.utc) - timedelta(days=days)
         
         # Get commits in the period
         commits = self.client.get_commits(owner, repo, since=since)

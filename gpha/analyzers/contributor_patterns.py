@@ -2,7 +2,7 @@
 Contributor patterns analyzer.
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List
 from collections import defaultdict
 from ..github_client import GitHubClient
@@ -32,7 +32,7 @@ class ContributorPatternsAnalyzer:
         Returns:
             ContributorMetrics with calculated scores.
         """
-        now = datetime.now()
+        now = datetime.now(timezone.utc)
         thirty_days_ago = now - timedelta(days=30)
         ninety_days_ago = now - timedelta(days=90)
         

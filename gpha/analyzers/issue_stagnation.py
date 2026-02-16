@@ -2,7 +2,7 @@
 Issue stagnation detector.
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import List
 from statistics import median
 from ..github_client import GitHubClient
@@ -32,7 +32,7 @@ class IssueStagnationAnalyzer:
         Returns:
             IssueStagnationMetrics with calculated scores.
         """
-        now = datetime.now()
+        now = datetime.now(timezone.utc)
         
         # Get all issues
         all_issues = self.client.get_issues(owner, repo, state="all")
