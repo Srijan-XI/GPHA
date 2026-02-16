@@ -26,7 +26,7 @@ def check_environment():
     # Check for GitHub token
     token = os.getenv("GITHUB_TOKEN")
     if not token:
-        print("\n⚠️  WARNING: GITHUB_TOKEN not found!")
+        print("\nWARNING: GITHUB_TOKEN not found!")
         print("Please set your GitHub token:")
         print("  1. Create a .env file with: GITHUB_TOKEN=your_token_here")
         print("  2. Or export it: export GITHUB_TOKEN=your_token_here")
@@ -65,27 +65,27 @@ def analyze_repository(owner: str, repo: str, output_file: str = None):
         print("ANALYSIS RESULTS")
         print("=" * 70)
         
-        print(f"\n📊 OVERALL HEALTH SCORE: {report.health_score.overall}/100")
+        print(f"\nOVERALL HEALTH SCORE: {report.health_score.overall}/100")
         
         # Determine health status
         if report.health_score.overall >= 80:
-            status = "🟢 Excellent"
+            status = "[EXCELLENT]"
         elif report.health_score.overall >= 60:
-            status = "🟡 Good"
+            status = "[GOOD]"
         elif report.health_score.overall >= 40:
-            status = "🟠 Fair"
+            status = "[FAIR]"
         else:
-            status = "🔴 Needs Attention"
+            status = "[NEEDS ATTENTION]"
         
         print(f"Status: {status}\n")
         
         print("Component Scores:")
-        print(f"  📈 Activity:           {report.health_score.activity}/100")
-        print(f"  🐛 Issue Health:       {report.health_score.issue_health}/100")
-        print(f"  💻 Code Quality:       {report.health_score.code_quality}/100")
-        print(f"  👥 Contributor Health: {report.health_score.contributor_health}/100")
+        print(f"  Activity:           {report.health_score.activity}/100")
+        print(f"  Issue Health:       {report.health_score.issue_health}/100")
+        print(f"  Code Quality:       {report.health_score.code_quality}/100")
+        print(f"  Contributor Health: {report.health_score.contributor_health}/100")
         
-        print("\n📊 Key Metrics (Last 30 days):")
+        print("\nKey Metrics (Last 30 days):")
         print(f"  Commits:               {report.activity_metrics.commits_last_30_days}")
         print(f"  Pull Requests Opened:  {report.activity_metrics.prs_opened_last_30_days}")
         print(f"  Pull Requests Merged:  {report.activity_metrics.prs_merged_last_30_days}")
@@ -93,19 +93,19 @@ def analyze_repository(owner: str, repo: str, output_file: str = None):
         print(f"  Issues Closed:         {report.activity_metrics.issues_closed_last_30_days}")
         print(f"  Active Contributors:   {report.activity_metrics.active_contributors_last_30_days}")
         
-        print("\n🐛 Issue Health:")
+        print("\nIssue Health:")
         print(f"  Total Open Issues:     {report.issue_metrics.total_open_issues}")
         print(f"  Stagnant (90+ days):   {report.issue_metrics.stagnant_issues_90_days}")
         print(f"  Avg Time to Close:     {report.issue_metrics.avg_time_to_close_days:.1f} days")
         print(f"  Median Issue Age:      {report.issue_metrics.median_issue_age_days:.1f} days")
         
-        print("\n💻 Code Churn:")
+        print("\nCode Churn:")
         print(f"  Files Changed:         {report.churn_metrics.total_files_changed}")
         print(f"  Lines Added:           {report.churn_metrics.total_additions}")
         print(f"  Lines Deleted:         {report.churn_metrics.total_deletions}")
         print(f"  Avg Changes/Commit:    {report.churn_metrics.avg_changes_per_commit:.1f}")
         
-        print("\n👥 Contributors:")
+        print("\nContributors:")
         print(f"  Total Contributors:    {report.contributor_metrics.total_contributors}")
         print(f"  Active (30 days):      {report.contributor_metrics.active_contributors_30_days}")
         print(f"  New (30 days):         {report.contributor_metrics.new_contributors_30_days}")
@@ -120,20 +120,20 @@ def analyze_repository(owner: str, repo: str, output_file: str = None):
             with open(output_path, 'w') as f:
                 json.dump(report.to_dict(), f, indent=2)
             
-            print(f"\n💾 Report saved to: {output_path}")
+            print(f"\nReport saved to: {output_path}")
         
         print("\n" + "=" * 70)
-        print("✅ Analysis complete!")
+        print("Analysis complete!")
         print("=" * 70 + "\n")
         
         return report
         
     except ValueError as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\nError: {e}")
         print("Make sure GITHUB_TOKEN is set correctly.")
         sys.exit(1)
     except Exception as e:
-        print(f"\n❌ Unexpected error: {e}")
+        print(f"\nUnexpected error: {e}")
         import traceback
         traceback.print_exc()
         sys.exit(1)
@@ -141,7 +141,7 @@ def analyze_repository(owner: str, repo: str, output_file: str = None):
 
 def main():
     """Main entry point."""
-    print("\n🔍 GitHub Project Health Analyzer (GPHA)")
+    print("\nGitHub Project Health Analyzer (GPHA)")
     print(f"Version: 0.1.0\n")
     
     # Check environment
