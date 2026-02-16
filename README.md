@@ -111,6 +111,27 @@ gpha owner/repo -f text
 gpha owner/repo --save-report
 ```
 
+### Quick Start with main.py
+
+For a simple, interactive way to analyze repositories, use `main.py`:
+
+```bash
+# Basic usage
+python main.py <owner> <repo>
+
+# Example
+python main.py microsoft vscode
+
+# Save report to file
+python main.py microsoft vscode reports/vscode-analysis.json
+```
+
+The script will:
+- Check for your GitHub token automatically
+- Run a complete analysis
+- Display formatted results in the terminal
+- Optionally save a JSON report
+
 ### Python API
 
 ```python
